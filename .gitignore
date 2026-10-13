@@ -1,0 +1,20 @@
+from invoice_sorter.extractor import extract_document
+from pathlib import Path
+
+
+def test_extract_document_handles_invoice_text(tmp_path):
+    sample = tmp_path / "sample_invoice.txt"
+    sample.write_text(
+        """Greenstone Studio\nInvoice 1042\nDate: 2026-10-06\nSubtotal: 120.00\nTax: 9.60\nTotal: 129.60""",
+        encoding="utf-8",
+    )
+
+    result = extract_document(sample)
+
+    assert result["vendor"] == "Greenstone Studio"
+    assert result["amount"] == 129.6
+    assert result["date"] == "2026-10-06"
+    assert result["tax"] == 9.6
+    assert result["category"] == "Other"
+    assert result["source_file"] == "sample_invoice.txt"
+

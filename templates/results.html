@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Local Invoice & Receipt Sorter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p class="eyebrow">Open-source AI side hustle</p>
+        <h1>Local Invoice & Receipt Sorter</h1>
+        <p class="subtitle">
+          Upload receipts and invoices to extract vendor, amount, tax, date, and category without leaving your laptop.
+        </p>
+      </header>
+
+      {% if error %}
+        <div class="alert">{{ error }}</div>
+      {% endif %}
+
+      <form action="/process" method="post" enctype="multipart/form-data" class="upload-card">
+        <label for="files">Choose invoice or receipt files</label>
+        <input id="files" type="file" name="files" multiple accept=".png,.jpg,.jpeg,.pdf,.txt,.csv">
+        <button type="submit">Sort & Export</button>
+      </form>
+
+      <section class="feature-grid">
+        <div class="feature">
+          <h3>Privacy-first</h3>
+          <p>Everything stays local on the user’s machine.</p>
+        </div>
+        <div class="feature">
+          <h3>CSV export</h3>
+          <p>Turn documents into bookkeeping-ready rows fast.</p>
+        </div>
+        <div class="feature">
+          <h3>Duplicate detection</h3>
+          <p>Flag repeat charges before they hit the ledger.</p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

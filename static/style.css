@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Invoice Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <header class="result-header">
+        <h1>Sorted Results</h1>
+        <a href="/download" class="button-link">Download CSV</a>
+      </header>
+
+      <section class="summary-box">
+        <h2>Monthly category totals</h2>
+        {% if category_summary %}
+          <ul>
+            {% for category, total in category_summary.items() %}
+              <li><strong>{{ category }}</strong>: ${{ '%.2f' % total }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No records processed yet.</p>
+        {% endif %}
+      </section>
+
+      <section class="duplicate-box">
+        <h2>Duplicate checks</h2>
+        {% if duplicate_groups %}
+          {% for group in duplicate_groups %}
+            <div class="duplicate-group">
+              {% for record in group %}
+                <span>{{ record.vendor }} · {{ record.amount }} · {{ record.date }}</span>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No duplicates detected.</p>
+        {% endif %}
+      </section>
+
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Tax</th>
+            <th>Category</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in records %}
+            <tr>
+              <td>{{ row.vendor }}</td>
+              <td>${{ '%.2f' % row.amount }}</td>
+              <td>{{ row.date }}</td>
+              <td>${{ '%.2f' % row.tax }}</td>
+              <td>{{ row.category }}</td>
+              <td>{{ row.source_file }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

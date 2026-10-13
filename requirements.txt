@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f7ff, #eef9f3);
+  color: #16213e;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: #2e7d6b;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  margin: 8px 0 12px;
+}
+
+.subtitle {
+  max-width: 760px;
+  font-size: 1.1rem;
+  color: #495d7a;
+}
+
+.upload-card,
+.feature,
+.summary-box,
+.duplicate-box {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(23,22,92,0.08);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(30, 61, 80, 0.08);
+}
+
+.upload-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input[type="file"] {
+  border: 1px dashed #77bba0;
+  border-radius: 10px;
+  padding: 14px;
+  background: #f7fbf9;
+}
+
+button,
+.button-link {
+  background: #1e8e6d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.feature {
+  padding: 20px;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.summary-box,
+.duplicate-box {
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.results-table th,
+.results-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #ebedf2;
+  text-align: left;
+}
+
+.alert {
+  background: #fff1ee;
+  color: #9c392e;
+  border: 1px solid #f0b1a3;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.duplicate-group {
+  padding: 10px 0;
+  color: #364d69;
+}
